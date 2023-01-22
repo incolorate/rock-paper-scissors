@@ -2,6 +2,7 @@ let playerButton = document.querySelectorAll(".choice");
 
 let ROUNDS = 5;
 
+let currentRound = 0;
 let computerChoice;
 let playerChoice;
 
@@ -14,16 +15,34 @@ function getComputerChoice() {
   } else {
     computerChoice = "scissors";
   }
+  console.log(computerChoice);
 }
 
 playerButton.forEach((button) =>
   button.addEventListener("click", () => {
-    playerChoice = button.value;
+    if (currentRound <= ROUNDS) {
+      currentRound++;
+      getComputerChoice();
+      playerChoice = button.value;
+      playGame(playerChoice, computerChoice);
+    }
   })
 );
 
-// function playGame (playerChoice, computerChoice) {
-//   for (i = 0; i < ROUNDS; i++) {
-
-//   }
-// }
+function playGame(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    console.log("tie");
+  } else if (playerChoice === "rock" && computerChoice === "scissors") {
+    console.log("player win");
+  } else if (playerChoice === "rock" && computerChoice === "paper") {
+    console.log("computer win");
+  } else if (playerChoice === "paper" && computerChoice === "scissors") {
+    console.log("computer wins");
+  } else if (playerChoice === "paper" && computerChoice === "rock") {
+    console.log("player win");
+  } else if (playerChoice === "scissors" && computerChoice === "rock") {
+    console.log("computer win");
+  } else if (playerChoice === "scissors" && computerChoice === "paper") {
+    console.lof("player win");
+  }
+}
