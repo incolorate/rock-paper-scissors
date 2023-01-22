@@ -1,4 +1,9 @@
-let computerChoice = "";
+let playerButton = document.querySelectorAll(".choice");
+
+let ROUNDS = 5;
+
+let computerChoice;
+let playerChoice;
 
 function getComputerChoice() {
   let randomNumber = Math.random();
@@ -10,3 +15,15 @@ function getComputerChoice() {
     computerChoice = "scissors";
   }
 }
+
+playerButton.forEach((button) =>
+  button.addEventListener("click", () => {
+    playerChoice = button.value;
+  })
+);
+
+// function playGame (playerChoice, computerChoice) {
+//   for (i = 0; i < ROUNDS; i++) {
+
+//   }
+// }
