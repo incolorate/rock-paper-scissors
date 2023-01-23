@@ -4,13 +4,14 @@ let battleButton = document.querySelector(".battle");
 let modal = document.querySelector(".modal-container");
 let userName = document.querySelector(".user-name");
 let roundsInput = document.querySelector(".rounds");
-//
+// Displays
 let playerDisplay = document.querySelector(".player-choice");
 let computerDisplay = document.querySelector(".computer-choice");
-
+// Player computer scores
 let playerScoreDisplay = document.querySelector(".player-score");
 let computerScoreDisplay = document.querySelector(".computer-score");
 
+//Default round number
 let ROUNDS = 5;
 
 let playerName;
@@ -20,6 +21,7 @@ let playerChoice;
 let playerScore = 0;
 let computerScore = 0;
 
+//  Asign rock/p/s to computerChoice
 function getComputerChoice() {
   let randomNumber = Math.random();
   if (randomNumber <= 0.35) {
@@ -34,6 +36,7 @@ function getComputerChoice() {
   }
 }
 
+// On each click the round is updated & the score updated, when currentRound = ROUNDS, tigger game over
 playerButton.forEach((button) =>
   button.addEventListener("click", () => {
     if (currentRound < ROUNDS) {
@@ -50,11 +53,13 @@ playerButton.forEach((button) =>
   })
 );
 
+// Updates UI
 function updateScore() {
   playerScoreDisplay.innerText = playerScore;
   computerScoreDisplay.innerText = computerScore;
 }
 
+// Update score based on winner
 function playGame(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     playerScore++;
@@ -74,16 +79,22 @@ function playGame(playerChoice, computerChoice) {
   }
 }
 
+// If name.length < 2 -> invalid warning
+let invalidText = document.querySelector(".invalid");
+
 battleButton.addEventListener("click", (e) => {
-  if (userName.value.length > 3 && roundsInput.value > 0) {
+  if (userName.value.length >= 3 && roundsInput.value > 0) {
     e.preventDefault();
     ROUNDS = roundsInput.value;
     playerName = userName.value;
     modal.style.display = "none";
+  } else if (userName.value.length < 3) {
+    e.preventDefault();
+    invalidText.style.display = "flex";
   }
 });
 
-//
+// Text bassed on winner
 let textIfPlayerWin =
   "emerges victorious, standing tall and proud in the face of his fierce opponent. His trusty weapon, honed and sharpened to perfection, has proven to be mightier than the competition. The crowd erupts in cheers and applause as the warrior raises his weapon in triumph. The battle was intense, but the warrior's skill and determination has led him to victory. He basks in the glory of his hard-earned triumph, a true champion among warriors.";
 let textIfComputerWin =
@@ -96,11 +107,10 @@ let overModal = document.querySelector(".over-modal-container");
 function endGame() {
   overModal.style.display = "flex";
   if (playerScore > computerScore) {
-    endText.innerText = `${playerName} ${textIfPlayerWin}`;
+    endText.innerText = `The final score was 🧝‍♂️${playerScore} to  🐉${computerScore}. ${playerName} ${textIfPlayerWin}`;
   } else if (playerScore < computerScore) {
     endText.innerText = textIfComputerWin;
   } else if (playerScore === computerScore) {
     endText.innerText = textIfTie;
   }
 }
-

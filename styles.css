@@ -83,7 +83,11 @@ form {
   align-items: center;
   flex-direction: column;
 }
-
+.modal .invalid {
+  color: red;
+  font-size: small;
+  display: none;
+}
 /* Title */
 
 .title {
