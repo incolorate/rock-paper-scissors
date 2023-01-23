@@ -181,11 +181,31 @@ form {
   .modal {
     max-width: 1000px;
   }
-  .modal p {
+  .modal p,
+  .over-modal p {
     font-size: xx-large;
   }
 
   .modal button {
     font-size: 50px;
+  }
+
+  .title,
+  .score-container {
+    font-size: 64px;
+  }
+
+  .player-choice,
+  .computer-choice {
+    width: 250px;
+    height: 250px;
+    font-size: 150px;
+  }
+
+  .choice {
+    background-color: #27272a;
+    border: 0;
+    font-size: 150px;
+    margin-top: 55px;
   }
 }
