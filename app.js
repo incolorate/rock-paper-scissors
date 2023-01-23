@@ -23,7 +23,7 @@ function getComputerChoice() {
 
 playerButton.forEach((button) =>
   button.addEventListener("click", () => {
-    if (currentRound <= ROUNDS) {
+    if (currentRound < ROUNDS) {
       currentRound++;
       getComputerChoice();
       playerChoice = button.value;
