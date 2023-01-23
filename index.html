@@ -3,10 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="./styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors.git</title>
   </head>
   <body>
+    <div class="modal-container">
+      <div class="modal">
+        <p>
+          Welcome to the arena of battle! Today, you will face off against a
+          fierce opponent in a game of Rock, Paper, Scissors.
+        </p>
+        <form>
+          <p>
+            Enter your name:
+            <input type="text" maxlength="10" required class="user-name" />
+          </p>
+          <p>
+            Chose the number of rounds:
+            <input type="number" min="1" required class="rounds" />
+          </p>
+          <button type="submit" class="battle">Battle!</button>
+        </form>
+      </div>
+    </div>
     <div class="player-button">
       <button value="paper" class="paper choice">✋</button>
       <button value="rock" class="rock choice">👊</button>

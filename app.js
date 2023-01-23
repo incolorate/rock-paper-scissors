@@ -1,4 +1,8 @@
 let playerButton = document.querySelectorAll(".choice");
+let battleButton = document.querySelector(".battle")
+let modal = document.querySelector(".modal-container")
+let userName = document.querySelector(".user-name")
+let roundsInput = document.querySelector(".rounds")
 
 let ROUNDS = 5;
 
@@ -15,7 +19,6 @@ function getComputerChoice() {
   } else {
     computerChoice = "scissors";
   }
-  console.log(computerChoice);
 }
 
 playerButton.forEach((button) =>
@@ -46,3 +49,11 @@ function playGame(playerChoice, computerChoice) {
     console.lof("player win");
   }
 }
+
+
+battleButton.addEventListener("click", (e) => {
+  if (userName.value.length > 3 && roundsInput.value > 0) {
+    e.preventDefault()
+    modal.style.display = "none";
+  }
+})
