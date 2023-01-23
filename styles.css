@@ -41,9 +41,6 @@ body {
   flex-direction: column;
 }
 
-.over-modal {
-  margin-top: auto;
-}
 .modal p,
 .over-modal {
   text-align: center;
@@ -86,6 +83,10 @@ form {
   color: red;
   font-size: small;
   display: none;
+}
+
+.over-modal {
+  margin: auto;
 }
 /* Title */
 

@@ -109,8 +109,8 @@ function endGame() {
   if (playerScore > computerScore) {
     endText.innerText = `The final score was 🧝‍♂️${playerScore} to  🐉${computerScore}. ${playerName} ${textIfPlayerWin}`;
   } else if (playerScore < computerScore) {
-    endText.innerText = textIfComputerWin;
+    endText.innerText = `The final score was 🧝‍♂️${playerScore} to  🐉${computerScore}. ${playerName} ${textIfComputerWin}`;
   } else if (playerScore === computerScore) {
-    endText.innerText = textIfTie;
+    endText.innerText = `The final score was 🧝‍♂️${playerScore} to  🐉${computerScore}. ${playerName} ${textIfTie}`;
   }
 }
