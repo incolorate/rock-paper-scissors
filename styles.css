@@ -42,6 +42,9 @@ body {
   flex-direction: column;
 }
 
+.over-modal {
+  margin-top: auto;
+}
 .modal p,
 .over-modal {
   text-align: center;
