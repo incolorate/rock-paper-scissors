@@ -1,8 +1,12 @@
 let playerButton = document.querySelectorAll(".choice");
-let battleButton = document.querySelector(".battle")
-let modal = document.querySelector(".modal-container")
-let userName = document.querySelector(".user-name")
-let roundsInput = document.querySelector(".rounds")
+let battleButton = document.querySelector(".battle");
+// Modal, chose name/rounds
+let modal = document.querySelector(".modal-container");
+let userName = document.querySelector(".user-name");
+let roundsInput = document.querySelector(".rounds");
+//
+let playerDisplay = document.querySelector(".player-choice");
+let computerDisplay = document.querySelector(".computer-choice");
 
 let ROUNDS = 5;
 
@@ -14,10 +18,13 @@ function getComputerChoice() {
   let randomNumber = Math.random();
   if (randomNumber <= 0.35) {
     computerChoice = "rock";
+    computerDisplay.innerText = "👊"
   } else if (randomNumber > 0.35 && randomNumber < 0.65) {
     computerChoice = "paper";
+    computerDisplay.innerText = "✋"
   } else {
     computerChoice = "scissors";
+    computerDisplay.innerText = "✂️"
   }
 }
 
@@ -27,6 +34,7 @@ playerButton.forEach((button) =>
       currentRound++;
       getComputerChoice();
       playerChoice = button.value;
+      playerDisplay.innerText = button.innerText;
       playGame(playerChoice, computerChoice);
     }
   })
@@ -50,10 +58,9 @@ function playGame(playerChoice, computerChoice) {
   }
 }
 
-
 battleButton.addEventListener("click", (e) => {
   if (userName.value.length > 3 && roundsInput.value > 0) {
-    e.preventDefault()
+    e.preventDefault();
     modal.style.display = "none";
   }
-})
+});
