@@ -7,24 +7,30 @@ let roundsInput = document.querySelector(".rounds");
 //
 let playerDisplay = document.querySelector(".player-choice");
 let computerDisplay = document.querySelector(".computer-choice");
+let messages = document.querySelector(".funny-messages");
+
+let playerScoreDisplay = document.querySelector(".player-score");
+let computerScoreDisplay = document.querySelector(".computer-score");
 
 let ROUNDS = 5;
 
 let currentRound = 0;
 let computerChoice;
 let playerChoice;
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
   let randomNumber = Math.random();
   if (randomNumber <= 0.35) {
     computerChoice = "rock";
-    computerDisplay.innerText = "👊"
+    computerDisplay.innerText = "👊";
   } else if (randomNumber > 0.35 && randomNumber < 0.65) {
     computerChoice = "paper";
-    computerDisplay.innerText = "✋"
+    computerDisplay.innerText = "✋";
   } else {
     computerChoice = "scissors";
-    computerDisplay.innerText = "✂️"
+    computerDisplay.innerText = "✂️";
   }
 }
 
@@ -36,31 +42,43 @@ playerButton.forEach((button) =>
       playerChoice = button.value;
       playerDisplay.innerText = button.innerText;
       playGame(playerChoice, computerChoice);
+      
+      updateScore()
+
     }
   })
 );
 
+function updateScore() {
+  playerScoreDisplay.innerText = playerScore;
+  computerScoreDisplay.innerText = computerScore;
+}
+
 function playGame(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    console.log("tie");
+    playerScore++;
+    computerScore++;
   } else if (playerChoice === "rock" && computerChoice === "scissors") {
-    console.log("player win");
+    playerScore++;
   } else if (playerChoice === "rock" && computerChoice === "paper") {
-    console.log("computer win");
+    computerScore++;
   } else if (playerChoice === "paper" && computerChoice === "scissors") {
-    console.log("computer wins");
+    computerScore++;
   } else if (playerChoice === "paper" && computerChoice === "rock") {
-    console.log("player win");
+    playerScore++;
   } else if (playerChoice === "scissors" && computerChoice === "rock") {
-    console.log("computer win");
+    computerScore++;
   } else if (playerChoice === "scissors" && computerChoice === "paper") {
-    console.lof("player win");
+    playerScore++;
   }
 }
 
 battleButton.addEventListener("click", (e) => {
   if (userName.value.length > 3 && roundsInput.value > 0) {
     e.preventDefault();
+    ROUNDS = roundsInput.value
     modal.style.display = "none";
   }
 });
+
+
