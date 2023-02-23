@@ -47,7 +47,7 @@ playerButton.forEach((button) =>
       playGame(playerChoice, computerChoice);
       updateScore();
       if (currentRound == ROUNDS) {
-        endGame();
+        setTimeout(endGame, 1250);
       }
     }
   })
